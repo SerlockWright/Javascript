@@ -115,8 +115,21 @@
                 this.data.push(item)
             }
 
+            pop(item) {
+                if (this.isEmpty()) {
+                    return "Stack is empty"
+                }
+                return this.data.pop(item)
+            }
+
             showData() {
                 console.log('stack data: ', this.data)
+            }
+        }
+
+        class Queue extends StructureData {
+            constructor() {
+                super()
             }
         }
 
