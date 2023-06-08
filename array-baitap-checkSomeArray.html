@@ -29,10 +29,9 @@
         street: {
           pictureStreet: 'http://localhost:3032/uploads/street.pdf',
         },
-      }
+      } // nested object
 
       // apply: flattern, đệ quy
-
       /* output
        {
           businessLicenseNumber: '23',
@@ -45,11 +44,34 @@
        }
       */
 
+    function checkObjectType(input) {
+      return typeof (input) === 'object' && !Array.isArray(input) && input !== null;
+    }
 
+    function flattenObject(input, res) {
+      for (const key in input) {
+        // check item is object or not.
+        // input[key] = idNumber
+        if (checkObjectType(input[key])) {
+          res = flattenObject(input[key], res)
+        }
+        else {
+          res[key] = input[key]
+        }
+        /*
+          {
+            businessLicenseNumber: '23'
+            id: 22,
+            pictureIdNumber: 'http://localhost:3032/uploads/1548662953953.png',
+            ...
+          }
+        */
+      }
+      return res;
+    }
 
-
-
-
+    const objectFlattened = flattenObject(input, {});
+    console.log('Result: ', objectFlattened);
     </script>
   </body>
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webstorage</title>
+</head>
+
+<body>
+    <!-- localStorage
+    The localStorage object stores the data with no expiration date.
+    Storage maximum 5MB.
+    Storaged from client side.
+    Data is json string
+    The data will be deleted when the user clear history of browser. -->
+
+    <div id='user'></div>
+</body>
+
+<script type="text/javascript">
+    const user = {
+        name: 'Tin',
+        age: '20',
+        address: 'HCM'
+    }
+
+    //store data
+    window.localStorage.setItem('user', JSON.stringify(user));
+
+    //get data from store
+    const data = window.localStorage.getItem('user');
+    const userData = JSON.parse(data);
+
+    //template string
+    document.getElementById('user').innerHTML = `
+        name: ${user.name}
+    `
+    console.log('data: ', userData);
+
+    // --- SessionStorage
+    // It stores the data for only one session.
+    // The data is deleted when the user closes the specific browser tab.
+    
+    //window.sessionStorage.setItem('user', JSON.stringify(user));
+
+</script>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //unpack
+        const obj = {
+            name: 'truong',
+            firstName: 'nguyen',
+            lastName: 'nhat',
+            author: 'angular',
+            country: {
+                city: 'hcm',
+                address: 'phu nhuan',
+                ship: {
+                    numShip: '124232'
+                }
+            }
+        }
+
+
+        //es5
+        // const name = obj.name;
+        // const firstName = obj.firstName;
+
+        //es6: rename, default value
+        const { name: nameObj = 'Linh', age = 12 } = obj;
+        console.log('destructuring: ', { nameObj, age });
+
+        const newObj = {
+            ...obj,
+            gender: 'male'
+        }
+        // console.log(first)
+
+        //rest operator
+        const { author, ...rest } = obj;
+        console.log('rest operator: ', { rest, obj });
+
+        //swap item
+        let source = 1;
+        let destination = 3;
+
+        [source, destination] = [destination, source];
+        console.log('swap item: ', { source, destination });
+
+        //ignore value with array
+        const fruits = ['banana', 'lemon', 'mango'];
+        const [a, , c] = fruits;
+        console.log('array destructuringL: ', { a, c })
+
+        //nested obj
+        //es5
+        const address = obj.country.address;
+        const numShip = obj.country.ship.numShip;
+
+        //es6
+        const {
+            country: {
+                address: addressCountry,
+                ship: {
+                    numShip: numShipCountry
+                }
+            }
+        } = obj
+        console.log('nested object: ', { addressCountry, numShipCountry });
+    </script>
+</body>
+
+</html>

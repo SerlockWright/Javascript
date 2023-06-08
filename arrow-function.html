@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //arrow function
+        const getDateTime = (num) => {
+            if (num > 10) {
+                return Date.now();
+            } else if (num === 8) {
+                return 8
+            }
+            return 0;
+        }
+        // trong func co dieu kien can return tham so voi gia tri mac dinh neu cac truong hop ko xay ra
+
+        //return directly
+        const getDateTimeDirectly = () => Date.now();
+        console.log('getDateTime: ', getDateTime(1));
+        console.log('getDateTimeDirectly: ', getDateTimeDirectly());
+
+        //no this
+        const object = {
+            firstName: 'truong',
+            lastName: 'nguyen',
+            age: 18,
+            getFirstName: function () {
+                console.log('getFirstName: ', this)
+            },
+            getLastName: () => {
+                console.log('getLastName: ', this)
+            }
+        }
+
+        object.getFirstName();
+        object.getLastName();
+
+        //syntax code: neu pass tham so kieu chuoi thi phai theo thu tu, nen su dung truyen
+        //vao obj de ko can quan tam thu tu
+
+        //pass parameter
+        const getInforUser = ({
+            firstName = 'Tin',
+            lastName = 'Vo',
+            age = 18,
+            gender = 'male'
+        }) => {
+            return {
+                firstName,
+                lastName,
+                age,
+                gender
+            }
+        }
+        const parameterArrow = getInforUser({
+            age: 20
+        })
+        console.log('parameterArrow: ', parameterArrow)
+
+        // return Object, array
+        const returnLiterals = () => ({ name: 'tin', age: 18 })
+        console.log('return literal: ', returnLiterals())
+
+        //curry function
+
+    </script>
+</body>
+
+</html>

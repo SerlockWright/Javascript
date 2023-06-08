@@ -43,40 +43,137 @@
           "group":   "Billing",
         },
       ];
-
-      /* output
-      {
-        Billing: [
-          {
-            "email":      "email@example.com",
-            "first_name": "Tony",
-            "last_name":  "Nguyen",
-            "group":   "Billing", 
-          },
-          ...
-        ],
-        Collaboration: [
-          {}
-        ],
-        Simulation: [
-          {}
-        ],
-      }
-
-
-      */
-
       // const output =  {
       //   Billing: [
-      //     {}
       //   ],
       //   Collaboration: [
-      //     {}
       //   ],
       //   Simulation: [
-      //     {}
       //   ],
       // }
+
+      function arrangeNotiGroup(data) {
+        const group = {}; 
+        // for (const item of data) {
+        //   const groupType = item.group; // Billing
+        //   const isExistedGroup = group[groupType]; // Billing
+        //   if(!isExistedGroup) {
+        //     group[groupType] = [];
+        //   }
+        //   group[groupType].push(item);
+        // }
+
+        data.forEach(item => {
+          const groupType = item.group; // Billing
+          const isExistedGroup = group[groupType]; // Billing
+          if (!isExistedGroup) {
+            // Billing = []
+            group[groupType] = [];
+          }
+          group[groupType].push(item);
+
+          /* loop 1
+          resGroupArranged[groupType] = Billing
+          {
+            Billing: [
+              {
+                "email":      "email@example.com",
+                "first_name": "Tony",
+                "last_name":  "Nguyen",
+                "group":   "Billing", 
+              },
+            ]
+          }
+
+          loop 2
+          {
+            Billing: [
+              {
+                "email":      "email@example.com",
+                "first_name": "Tony",
+                "last_name":  "Nguyen",
+                "group":   "Billing", 
+              },
+            ],
+            Collaboration: [
+              {
+                "email":      "email@example.com",
+                "first_name": "John",
+                "last_name":  "Doe",
+                "group":   "Collaboration",
+              }
+            ]
+          }
+
+          loop 3
+          {
+            Billing: [
+              {
+                "email":      "email@example.com",
+                "first_name": "Tony",
+                "last_name":  "Nguyen",
+                "group":   "Billing", 
+              },
+            ],
+            Collaboration: [
+              {
+                "email":      "email@example.com",
+                "first_name": "John",
+                "last_name":  "Doe",
+                "group":   "Collaboration",
+              }
+            ],
+            Simulation: [
+              {
+                "email":      "email@example.com",
+                "first_name": "Thang",
+                "last_name":  "Doe",
+                "group":   "Simulation"
+              }
+            ]
+          }
+
+          loop 4
+          {
+            Billing: [
+              {
+                "email":      "email@example.com",
+                "first_name": "Tony",
+                "last_name":  "Nguyen",
+                "group":   "Billing", 
+              },
+              {
+                "email":      "email@example.com",
+                "first_name": "Stefan",
+                "last_name":  "Doe",
+                "group":   "Billing",
+              },
+            ],
+            Collaboration: [
+              {
+                "email":      "email@example.com",
+                "first_name": "John",
+                "last_name":  "Doe",
+                "group":   "Collaboration",
+              }
+            ],
+            Simulation: [
+              {
+                "email":      "email@example.com",
+                "first_name": "Thang",
+                "last_name":  "Doe",
+                "group":   "Simulation"
+              }
+            ]
+          }
+
+          */
+        });
+        return resGroupArranged;
+      }
+      const dataNotiArranged = arrangeNotiGroup(dataNotification);
+
+      console.log('After grouping: ', dataNotiArranged);
 
 
     </script>
